@@ -1,68 +1,143 @@
+/* Critical CSS */
+*{
+  box-sizing: border-box;
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --container-max-width: 1520px;
+  --content-width: min(100%,var(--container-max-width, 1280px)); /* Fallbacks 1280px*/
+  --section-horizontal-padding: 55px;
+  --section-mobile-horizontal-padding: 15px;
+  --section-vertical-padding: 35px;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --custom-black: #1c1c1e;
+  --custom-white: #f9f9f9;
+  --custom-color: #f9f9f9;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+body, html{
+  padding: 0;
   margin: 0;
+}
+img,video{
+    height: auto;
+    max-width: 100%;
+}
+section, .section{
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  width: 100%;
+  padding-inline: var(--section-horizontal-padding);
+  padding-top: var(--section-vertical-padding);
+  padding-bottom: var(--section-vertical-padding);
+
+  overflow: hidden;
+}
+section{
+  position: relative;
+}
+.container, .container-fluid{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.container{
+  max-width: var(--content-width);
+  margin: 0 auto;
+}
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+/* Layout */
+.flex-container{
+  display: flex;
+}
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.column{
+  display: flex;
+  flex-direction: column;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* Spacing */
+
+.justify-center{
+  justify-content: center;
+}
+.align-center{
+  align-items: center;
+}
+.justify-between{
+  justify-content: space-between;
+}
+.align-between{
+  align-items: space-between;
+}
+.self-center{
+  align-self: center;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+/* Positioning */
+.position-relative{
+  position: relative;
 }
-button:hover {
-  border-color: #646cff;
+.position-absolute{
+  position: absolute;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* Misc */
+
+.unstyle-lists ul{
+  padding-left: 0;
+  list-style: none;
+}
+.unstyle-links a{
+  text-decoration: none;
+  color: var(--custom-color);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@media (max-width: 768px){
+  .flex-container{
+    flex-direction: column;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+  section, .section{
+    padding-inline: var(--section-mobile-horizontal-padding);
   }
 }
+/* Custom styles (for SPA) */
+
+:root{
+  color: var(--custom-color);
+}
+body{
+  background-color: var(--custom-black);
+}
+header,footer{
+  position: absolute;
+}
+footer{
+  bottom: 0;
+}
+.hero{
+  height: 100vh;
+}
+.profile-picture{
+  border-radius: 50%;
+  border: solid 3px var(--custom-white);
+  outline: none;
+  width: 200px;
+}
+/* End Critical CSS */
