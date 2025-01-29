@@ -119,21 +119,32 @@ section{
 }
 /* Custom styles (for SPA) */
 
+/* Global */
 :root{
   color: var(--custom-color);
 }
 body{
   background-color: var(--custom-black);
 }
-header,footer{
-  position: absolute;
+.layout{
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
 }
-footer{
-  bottom: 0;
+.main-content{
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
 }
 .hero{
-  height: 100vh;
+  flex: 1;
 }
+/* End of global */
+
+
+
 .profile-picture{
   border-radius: 50%;
   border: solid 3px var(--custom-white);
